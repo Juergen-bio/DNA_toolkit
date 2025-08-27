@@ -1,8 +1,9 @@
+
 from DNAToolkit import *
-from structure import *
+from structures import *
 from Bio import SeqIO
 
-folder_path = r'C:\Users\hp\PycharmProjects\pythonProject\project\maize_files\MON810.fasta'
+folder_path = r'path'
 dna = []
 
 with open(folder_path, 'r') as handle:

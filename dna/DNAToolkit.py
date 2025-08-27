@@ -1,4 +1,4 @@
-from structure import *
+from structures import *
 
 #check to validate it is a dna string regardless of the source.
 def validate(dna_seq):
@@ -6,7 +6,7 @@ def validate(dna_seq):
     for nuc in temp:
         if nuc not in nucleotide:
             return False
-        return temp
+    return temp
 
 def count(dna_seq):
     number = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
@@ -22,7 +22,7 @@ def reversecompliment(seq):
     return ''.join([dna_reversecompliment[nuc] for nuc in seq])[::-1]
 
 def gc_content(seq):
-    return ((seq.count('G') + seq.count('c')) / len(seq)) * 100
+    return ((seq.upper(count('g') + seq.upper(count('c')))))/ len(seq.upper()) * 100
 
 
 def translation(seq):
