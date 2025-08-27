@@ -22,7 +22,7 @@ def reversecompliment(seq):
     return ''.join([dna_reversecompliment[nuc] for nuc in seq])[::-1]
 
 def gc_content(seq):
-    return ((seq.upper(count('g') + seq.upper(count('c')))))/ len(seq.upper()) * 100
+    return (seq.upper().count('G') + seq.upper().count('C')) / len(seq) * 100
 
 
 def translation(seq):
