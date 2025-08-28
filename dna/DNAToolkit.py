@@ -11,8 +11,8 @@ def validate(dna_seq):
 def count(dna_seq):
     number = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
     for nuc in dna_seq:
-        if nuc in number:
-            number[nuc] += 1
+        if nuc.upper() in number:
+            number[nuc.upper()] += 1
     return number
 
 def transcription(seq):
@@ -25,15 +25,16 @@ def gc_content(seq):
     return (seq.upper().count('G') + seq.upper().count('C')) / len(seq) * 100
 
 
-def translation(seq):
+def translation(seq, codon_table):
     aa_seq = ''
-    for i in range (0, len(seq) - len(seq)% 3, 3):
-        codon = seq[i:i + 3]
-        aminoacid = codon_table[codon]
-        if codon not in codon_table:
-            aminoacid = 'X'
+    for i in range (0, len(seq) - len(seq)% 3, 3:
+        codon = seq[i:i + 3].upper()
+
+        if codon in codon_table:
+            aa_seq += codon_table[codon]
+
         else:
-            aa_seq += aminoacid
+            aa_seq += 'X'
     return aa_seq
 
 def reading_frames(aa_seq):
