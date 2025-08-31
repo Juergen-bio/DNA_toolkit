@@ -16,10 +16,20 @@ def count(dna_seq):
     return number
 
 def transcription(seq):
-    return seq.replace('T', 'U')
+    return seq.upper().replace('T', 'U')
 
-def reversecompliment(seq):
-    return ''.join([dna_reversecompliment[nuc] for nuc in seq])[::-1]
+def reverse_complement(seq):
+    complement_dict = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+    reverse_seq = seq[::-1].upper()
+    complement_seq = ''
+
+    for nuc in reverse_seq:
+        if nuc in complement_dict:
+            complement_seq += complement_dict[nuc]
+        else:
+            complement_seq += 'N' #'N' as a placeholder for non-nucleotides
+
+    return complement_seq
 
 def gc_content(seq):
     return (seq.upper().count('G') + seq.upper().count('C')) / len(seq) * 100
@@ -27,7 +37,7 @@ def gc_content(seq):
 
 def translation(seq, codon_table):
     aa_seq = ''
-    for i in range (0, len(seq) - len(seq)% 3, 3:
+    for i in range(0, len(seq) - len(seq)% 3, 3):
         codon = seq[i:i + 3].upper()
 
         if codon in codon_table:
@@ -36,6 +46,17 @@ def translation(seq, codon_table):
         else:
             aa_seq += 'X'
     return aa_seq
+
+def translation(seq, codon_table):
+    aa_seq = ''
+    for i in range(0, len(seq) - len(seq) % 3, 3):
+        codon = seq[i:i + 3].upper()
+        if codon in codon_table:
+            aa_seq += codon_table[codon]
+        else:
+            aa_seq += 'X'
+    return aa_seq
+
 
 def reading_frames(aa_seq):
     current_protein = []
@@ -58,12 +79,12 @@ def reading_frames(aa_seq):
         protein.append(current_protein)
     return protein
 
-def orf_proteins(seq):
+def orf_proteins(seq, codon_table):
     reading = []
-    reading.append(translation(seq, 0))
-    reading.append(translation(seq, 1))
-    reading.append(translation(seq, 2))
-    reading.append(translation(reversecompliment(seq, 0)))
-    reading.append(translation(reversecompliment(seq, 1)))
-    reading.append(translation(reversecompliment(seq, 2)))
+    reading.append(translation(seq, codon_table))
+    reading.append(translation(seq, codon_table))
+    reading.append(translation(seq, codon_table))
+    reading.append(translation(reverse_complement(seq, codon_table)))
+    reading.append(translation(reverse_complement(seq, codon_table)))
+    reading.append(translation(reverse_complement(seq, codon_table)))
 
