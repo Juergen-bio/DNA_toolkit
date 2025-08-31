@@ -47,37 +47,27 @@ def translation(seq, codon_table):
             aa_seq += 'X'
     return aa_seq
 
-def translation(seq, codon_table):
-    aa_seq = ''
-    for i in range(0, len(seq) - len(seq) % 3, 3):
-        codon = seq[i:i + 3].upper()
-        if codon in codon_table:
-            aa_seq += codon_table[codon]
-        else:
-            aa_seq += 'X'
-    return aa_seq
-
-
 def reading_frames(aa_seq):
     current_protein = []
-    protein = []
+    proteins = []
 
     for aa in aa_seq:
-        if aa == 'M': # starts a string of orf proteins
-            if current_protein:
-                protein.append(current_protein)
+        if aa == 'M':  # Starts a new potential ORF
+            if current_protein and current_protein[-1] != '_':
+                proteins.append(''.join(current_protein))
             current_protein = [aa]
-        elif aa == '_':
+        elif aa == '_':  # Terminates a protein
             if current_protein:
-                protein.append(current_protein)
+                current_protein.append(aa)
+                proteins.append(''.join(current_protein))
                 current_protein = []
         else:
             if current_protein:
                 current_protein.append(aa)
 
-    if current_protein: # adds any remaining proteins
-        protein.append(current_protein)
-    return protein
+    if current_protein:
+        proteins.append(''.join(current_protein))
+    return proteins
 
 def orf_proteins(seq, codon_table):
     reading = []
@@ -87,4 +77,4 @@ def orf_proteins(seq, codon_table):
     reading.append(translation(reverse_complement(seq, codon_table)))
     reading.append(translation(reverse_complement(seq, codon_table)))
     reading.append(translation(reverse_complement(seq, codon_table)))
-
+    return frames
