@@ -17,7 +17,7 @@ This is a comprehensive toolkit for analyzing and manipulating DNA sequences. Bu
     git clone https://github.com/Juergen-bio/DNA_toolkit.git
     cd DNAToolkit
     ```
-2.  Run the main script with your FASTA file:
+2.  Run the main script with your FASTA file or sequence:
     ```bash
     python dna/main.py path/to/your/file.fasta
     ```
