@@ -19,5 +19,7 @@ This is a comprehensive toolkit for analyzing and manipulating DNA sequences. Bu
     ```
 2.  Run the main script with your FASTA file or sequence:
     ```bash
-    python dna/main.py path/to/your/file.fasta
+    python3 toolkit/main.py --file my_data.fasta
+    
+    python3 toolkit/main.py --sequence ATGCATGCGCGA
     ```
