@@ -1,5 +1,5 @@
 nucleotide = ['A', 'C', 'G', 'T']
-dna_reversecompliment = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+
 codon_table = {
   'ATA': 'I', 'ATC': 'I', 'ATT': 'I', 'ATG': 'M',
   'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACT': 'T',
