@@ -11,7 +11,6 @@ def main():
     parser.add_argument('-s', '--sequence', help='Raw DNA sequence string to analyze.')
 
     args = parser.parse_args()
-
     dna_sequences = []
 
     if args.file:
@@ -49,8 +48,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
 
-python main.py --file my_data.fasta
-python main.py --sequence ATGCATGCGCGA
+'''
+run the script as stated on the last line of the READme file
 '''
