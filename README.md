@@ -1,6 +1,6 @@
 # DNAToolkit
 
-This is a comprehensive toolkit for analyzing and manipulating DNA sequences. Built entirely in Python, it provides a modular and efficient way to perform common bioinformatics tasks.
+This is a comprehensive toolkit for analyzing and manipulating DNA sequences. Built entirely in Python, it provides an efficient way to perform common bioinformatics tasks.
 
 ## Features
 
