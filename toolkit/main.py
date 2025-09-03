@@ -49,7 +49,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''you can run your script like this:
+'''
 
 python main.py --file my_data.fasta
 python main.py --sequence ATGCATGCGCGA
